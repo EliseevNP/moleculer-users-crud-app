@@ -1,0 +1,20 @@
+{{- if .Values.metrics.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "moleculer-users-crud.fullname" . }}
+  labels:
+    {{- include "moleculer-users-crud.labels" . | nindent 4 }}
+spec:
+  jobLabel: {{ include "moleculer-users-crud.fullname" . }}
+  namespaceSelector:
+    matchNames:
+    - "{{ $.Release.Namespace }}"
+  selector:
+    matchLabels:
+      {{- include "moleculer-users-crud.selectorLabels" . | nindent 6 }}
+  endpoints:
+  - interval: 30s
+    port: metrics
+    path: /metrics
+{{- end }}  
