@@ -25,7 +25,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "id": 28,
-  "iteration": 1656170828160,
+  "iteration": 1656173261625,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -428,7 +428,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -505,7 +506,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -613,7 +615,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -690,7 +693,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -798,7 +802,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -924,7 +929,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -996,7 +1002,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1061,151 +1068,6 @@
             "type": "prometheus",
             "uid": "prometheus"
           },
-          "description": "Среднее время выполнения запросов в миллисекундах (посчитано молекулером)",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineStyle": {
-                  "fill": "solid"
-                },
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "never",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 5,
-            "w": 24,
-            "x": 0,
-            "y": 8
-          },
-          "id": 23,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "table",
-              "placement": "right"
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "desc"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "moleculer_request_time{quantile=\"0.5\", type=\"remote\"}",
-              "format": "time_series",
-              "instant": false,
-              "legendFormat": "50%-tile latency of requests",
-              "range": true,
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-              },
-              "editorMode": "code",
-              "expr": "moleculer_request_time{quantile=\"0.9\", type=\"remote\"}",
-              "hide": false,
-              "legendFormat": "90%-tile latency of requests",
-              "range": true,
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-              },
-              "editorMode": "code",
-              "expr": "moleculer_request_time{quantile=\"0.95\", type=\"remote\"}",
-              "hide": false,
-              "legendFormat": "95%-tile latency of requests",
-              "range": true,
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "prometheus"
-              },
-              "editorMode": "code",
-              "expr": "moleculer_request_time{quantile=\"0.999\", type=\"remote\"}",
-              "hide": false,
-              "legendFormat": "99.9%-tile latency of requests",
-              "range": true,
-              "refId": "D"
-            }
-          ],
-          "title": "[MOL] Percentiles of latencies requests (by moleculer)",
-          "transformations": [
-            {
-              "id": "convertFieldType",
-              "options": {
-                "conversions": [
-                  {
-                    "destinationType": "number",
-                    "targetField": "sum(rate(moleculer_request_time_sum[1m])) / sum(rate(moleculer_request_time_count[1m]))"
-                  }
-                ],
-                "fields": {}
-              }
-            }
-          ],
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "prometheus"
-          },
           "description": "Процентили задержек запросов (посчитано вручную)",
           "fieldConfig": {
             "defaults": {
@@ -1245,7 +1107,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1260,7 +1123,7 @@
             "h": 5,
             "w": 24,
             "x": 0,
-            "y": 13
+            "y": 8
           },
           "id": 22,
           "options": {
@@ -1392,7 +1255,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1407,7 +1271,7 @@
             "h": 6,
             "w": 24,
             "x": 0,
-            "y": 18
+            "y": 13
           },
           "id": 32,
           "options": {
@@ -1525,7 +1389,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 42
+            "y": 4
           },
           "hiddenSeries": false,
           "id": 36,
@@ -1642,7 +1506,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 50
+            "y": 12
           },
           "id": 38,
           "interval": "1m",
@@ -1978,7 +1842,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 58
+            "y": 20
           },
           "hiddenSeries": false,
           "id": 40,
@@ -2094,7 +1958,7 @@
             "h": 7,
             "w": 24,
             "x": 0,
-            "y": 65
+            "y": 27
           },
           "id": 42,
           "interval": "1m",
@@ -2821,6 +2685,6 @@
   "timezone": "",
   "title": "moleculer-users-crud-app",
   "uid": "H9wAv1jnk",
-  "version": 26,
+  "version": 29,
   "weekStart": ""
 }
